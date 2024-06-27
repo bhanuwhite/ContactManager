@@ -1,0 +1,79 @@
+﻿@* @model ContactManager.Models.Contact
+
+@{
+    ViewData["Title"] = "Delete Contact";
+}
+
+<h2>Delete Contact</h2>
+
+
+<div>
+    <strong>First Name:</strong> @Model.FirstName
+</div>
+<div>
+    <strong>Last Name:</strong> @Model.LastName
+</div>
+<div>
+    <strong>Email:</strong> @Model.Email
+</div>
+<div>
+    <strong>Phone Number:</strong> @Model.PhoneNumber
+</div>
+<div>
+    <strong>Country Name:</strong> @Model.CountryName
+</div>
+<div>
+    <strong>Address:</strong> @Model.Address
+</div>
+
+@using (Html.BeginForm("Delete", "Contacts", new { id = Model.Id }, FormMethod.Post))
+{
+    <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure? Confirm Delete');">
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary" })
+}
+ *@
+
+ @model ContactManager.Models.Contact
+
+@{
+    ViewData["Title"] = "Delete Contact";
+}
+
+<div class="container">
+    <div class="card" style="max-width: 600px; margin: 0 auto;">
+        <div class="card-body">
+            <div class="text-center mb-4">
+                <h4 class="card-title">Delete Contact</h4>
+                <hr />
+            </div>
+
+            <dl class="row">
+                <dt class="col-sm-3">First Name</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.FirstName)</dd>
+
+                <dt class="col-sm-3">Last Name</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.LastName)</dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+                <dt class="col-sm-3">Phone Number</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.PhoneNumber)</dd>
+
+                <dt class="col-sm-3">Country</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.CountryName)</dd>
+
+                <dt class="col-sm-3">Address</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Address)</dd>
+            </dl>
+
+            <div class="d-flex justify-content-center gap-2">
+                @using (Html.BeginForm("Delete", "Contacts", new { id = Model.Id }, FormMethod.Post))
+                {
+                    <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure? Confirm Delete');">
+                    @Html.ActionLink("Back to List", "Index", "Contacts", null, new { @class = "btn btn-secondary" })
+                }
+            </div>
+        </div>
+    </div>
+</div>

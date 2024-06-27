@@ -1,0 +1,98 @@
+﻿@* 
+@model IEnumerable<ContactManager.Models.Contact>
+
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+
+<div class="d-flex justify-content-end mb-3">
+    <a href="@Url.Action("Create", "Contacts")" class="btn btn-primary">Create New Contact</a>
+</div>
+
+<table class="table table-light table-bordered" id="contactsTable">
+    <thead class="card-header">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.CountryName)</th>
+            <th>@Html.DisplayNameFor(model => model.Address)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr data-contact-id="@item.Id" class="contact-row">
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                <td>@Html.DisplayFor(modelItem => item.CountryName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Address)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".contact-row").dblclick(function () {
+                var contactId = $(this).data("contact-id");
+                window.location.href = "@Url.Action("Details", "Contacts")?id=" + contactId;
+            });
+        });
+    </script>
+}
+
+ *@
+ @model IEnumerable<ContactManager.Models.Contact>
+
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+<div class="d-flex justify-content-end mb-3">
+    <a href="@Url.Action("Create", "Contacts")" class="btn btn-primary">Create New Contact</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-light table-bordered" id="contactsTable">
+        <thead class="card-header">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+                <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+                <th>@Html.DisplayNameFor(model => model.CountryName)</th>
+                <th>@Html.DisplayNameFor(model => model.Address)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr data-contact-id="@item.Id" class="contact-row">
+                    <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CountryName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".contact-row").dblclick(function () {
+                var contactId = $(this).data("contact-id");
+                window.location.href = "@Url.Action("Details", "Contacts")?id=" + contactId;
+            });
+        });
+    </script>
+}
